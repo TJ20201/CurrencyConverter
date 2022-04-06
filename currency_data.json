@@ -1,28 +1,54 @@
 {
-	"currencys": ["CZK", "USD", "GBP", "JPY", "CAD"],
+	"currencys": ["CZK", "USD", "GBP", "JPY", "CAD", "AUD", "CHF", "HKD", "NZD"],
 	"rates": {
-		"USD_USD": 1.000,
-		"GBP_GBP": 1.000,
-		"JPY_JPY": 1.000,
-		"CAD_CAD": 1.000,
-		"CZK_CZK": 1.000,
+		"USD_CZK": 0.0450,
+		"USD_GBP": 1.3100,
+		"USD_EUR": 0.9200,
+		"USD_JPY": 0.0080,
+		"USD_CAD": 0.8000,
+		"USD_AUD": 1.3300,
+		"USD_CHF": 1.0700,
+		"USD_HKD": 0.1300,
+		"USD_NZD": 0.6900,
 
-		"USD_CZK": 0.045,
-		"USD_GBP": 1.310,
-		"USD_EUR": 0.920,
-		"USD_JPY": 0.008,
-		"USD_CAD": 0.800,
+		"GBP_CZK": 0.0340,
+		"GBP_EUR": 1.2000,
+		"GBP_CAD": 0.6100,
+		"GBP_AUD": 0.5800,
+		"GBP_CHF": 0.8200,
+		"GBP_HKD": 0.0980,
+		"GBP_NZD": 0.5300,
 
-		"GBP_CZK": 0.034,
-		"GBP_EUR": 1.200,
-		"GBP_CAD": 0.610,
+		"EUR_CZK": 0.0410,
+		"EUR_CAD": 0.7300,
+		"EUR_AUD": 0.6900,
+		"EUR_CHF": 0.9800,
+		"EUR_HKD": 0.1200,
 
-		"EUR_CZK": 0.041,
-		"EUR_CAD": 0.730,
+		"JPY_EUR": 134.97,
+		"JPY_GBP": 161.88,
+		"JPY_CAD": 98.990,
+		"JPY_CZK": 5.5200,
+		"JPY_AUD": 93.170,
+		"JPY_CHF": 132.54,
+		"JPY_HKD": 15.790,
+		"JPY_NZD": 85.500,
 
-		"JPY_EUR": 0.007,
-		"JPY_GBP": 0.006,
-		"JPY_CAD": 0.010,
-		"JPY_CZK": 5.520
+		"CAD_AUD": 0.9400,
+		"CAD_HKD": 0.1600,
+		"CAD_CHF": 1.3400,
+
+		"CHF_AUD": 0.7000,
+		"CHF_HKD": 0.1200,
+
+		"CZK_AUD": 16.870,
+
+		"HKD_AUD": 5.8800,
+
+		"NZD_AUD": 0.9200,
+		"NZD_CZK": 15.530,
+		"NZD_CAD": 0.8700,
+		"NZD_CHF": 0.6400,
+		"NZD_HKD": 5.4100
 	}
 }
