@@ -1,6 +1,8 @@
 import tkinter as tk
 import json
 
+__version__ = '1.1.0-dev'
+
 datajson = json.load(open('currency_data.json'))
 rates = datajson['rates']
 currencys = sorted(datajson['currencys'])
@@ -61,6 +63,9 @@ valou["menu"]["borderwidth"] = valou["borderwidth"] = 0
 valou.place(x=5,y=35+titleBarHeight, height=20,width=width-10)
 final = tk.Label(root, fg=colours['WHITE'], bg=colours['BLACD'])
 final.place(x=5, y=105+titleBarHeight, width=width-10,height=height-150)
+
+verLabel = tk.Label(root, fg='#DBDBD7', bg=colours['BLACK'],text=f"Version v{__version__}")
+verLabel.place(y=height-5,x=width-105)
 
 def convertMoney():
  try:rate = rates[f'{intype.get()}_{outype.get()}']
