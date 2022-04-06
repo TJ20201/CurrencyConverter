@@ -1,11 +1,9 @@
 import tkinter as tk
 import json
 
-currencys = ['CZK', 'GBP', 'USD']
-            #'FROM_TO': VALUE
-
 datajson = json.load(open('currency_data.json'))
 rates = datajson['rates']
+currencys = sorted(datajson['currencys'])
 
 colours = {
  'BLACK': '#28282B',

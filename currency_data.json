@@ -1,7 +1,28 @@
 {
+	"currencys": ["CZK", "USD", "GBP", "JPY", "CAD"],
 	"rates": {
-		"GBP_CZK": 0.034,
+		"USD_USD": 1.000,
+		"GBP_GBP": 1.000,
+		"JPY_JPY": 1.000,
+		"CAD_CAD": 1.000,
+		"CZK_CZK": 1.000,
+
 		"USD_CZK": 0.045,
-		"USD_GBP": 1.310
+		"USD_GBP": 1.310,
+		"USD_EUR": 0.920,
+		"USD_JPY": 0.008,
+		"USD_CAD": 0.800,
+
+		"GBP_CZK": 0.034,
+		"GBP_EUR": 1.200,
+		"GBP_CAD": 0.610,
+
+		"EUR_CZK": 0.041,
+		"EUR_CAD": 0.730,
+
+		"JPY_EUR": 0.007,
+		"JPY_GBP": 0.006,
+		"JPY_CAD": 0.010,
+		"JPY_CZK": 5.520
 	}
 }
