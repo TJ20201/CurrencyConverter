@@ -34,12 +34,15 @@ def move_window_cacheclick(event):
 def move_window(event):
  global mwcxl,mwcyl
  restrict = 25
+ skiplen = 55
  nx = event.x - mwcx + root.winfo_x()
  ny = event.y - mwcy + root.winfo_y()
  if nx > mwcxl+restrict: nx = mwcxl+restrict
  if nx < mwcxl-restrict: nx = mwcxl-restrict
  if ny > mwcyl+restrict: ny = mwcyl+restrict
  if ny < mwcyl-restrict: ny = mwcyl-restrict
+ if nx > mwcxl-skiplen or nx < mwcxl+skiplen: nx = event.x - mwcx + root.winfo_x()
+ if ny > mwcyl-skiplen or ny < mwcyl+skiplen: ny = event.y - mwcy + root.winfo_y()
  mwcxl,mwcyl = nx, ny
  root.geometry('+{0}+{1}'.format(mwcxl,mwcyl))
 root.overrideredirect(True)
