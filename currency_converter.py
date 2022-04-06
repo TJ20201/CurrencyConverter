@@ -68,13 +68,13 @@ outype = tk.StringVar();outype.set("USD")
 output = tk.StringVar()
 
 curin = tk.Entry(root,bg=colours['BLACD'],fg=colours['WHITE']) 
-curin.place(width=width-73,x=5,y=5+titleBarHeight)
+curin.place(width=width-75,x=5,y=5+titleBarHeight)
 
 valin = tk.OptionMenu(root, intype, *currencys)
 valin.config(highlightthickness=0,bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valin["menu"].config(bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valin["menu"]["borderwidth"] = valin["borderwidth"] = 0
-valin.place(x=width-63,y=5+titleBarHeight, height=20)
+valin.place(x=width-65,y=5+titleBarHeight, height=20)
 valou = tk.OptionMenu(root, outype, *currencys)
 valou.config(highlightthickness=0,bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valou["menu"].config(bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
