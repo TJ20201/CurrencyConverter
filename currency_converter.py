@@ -47,6 +47,7 @@ main.place(height=height,width=width,y=titleBarHeight)
 
 intype = tk.StringVar();intype.set("GBP")
 outype = tk.StringVar();outype.set("USD")
+output = tk.StringVar()
 
 curin = tk.Entry(root,bg=colours['BLACD'],fg=colours['WHITE']) 
 curin.place(width=width-73,x=5,y=5+titleBarHeight)
@@ -61,8 +62,8 @@ valou.config(highlightthickness=0,bg=colours['BLACD'],fg=colours['WHITE'],active
 valou["menu"].config(bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valou["menu"]["borderwidth"] = valou["borderwidth"] = 0
 valou.place(x=5,y=35+titleBarHeight, height=20,width=width-10)
-final = tk.Label(root, fg=colours['WHITE'], bg=colours['BLACD'])
-final.place(x=5, y=105+titleBarHeight, width=width-10,height=height-150)
+final = tk.Text(root,state='disabled',fg=colours['WHITE'],relief='flat',bg=colours['BLACD'])
+final.place(x=5, y=105+titleBarHeight, width=width-10,height=height-165)
 
 verLabel = tk.Label(root, fg='#DBDBD7', bg=colours['BLACK'],text=f"Version v{__version__}")
 verLabel.place(y=height-5,x=width-105)
@@ -70,10 +71,14 @@ verLabel.place(y=height-5,x=width-105)
 def convertMoney():
  try:rate = rates[f'{intype.get()}_{outype.get()}']
  except KeyError:rate = rates[f'{outype.get()}_{intype.get()}']
- final.configure(text=f"""~{round(stringToNumber(curin.get()),2)} {intype.get()}
-  ~{round(stringToNumber(curin.get())*rate,2)} {outype.get()}
- """)
- 
+ output.set(f"~{round(stringToNumber(curin.get()),2)} {intype.get()}\n~{round(stringToNumber(curin.get())*rate,2)} {outype.get()}")
+ lineOne = output.get().split("\n")[0]
+ lineTwo = output.get().split("\n")[1]
+ final.configure(state='normal')
+ final.delete(1.0,"end");final.delete(2.0,"end")
+ final.insert(1.0,lineOne+"\n");final.insert(2.0,lineTwo)
+ final.configure(state='disabled')
+
 convert = tk.Button(root,fg=colours['WHITE'],activeforeground=colours['WHITE'],bg=colours['GREEN'],activebackground=colours['GREED'],text=f"Convert currency",command=convertMoney)
 convert.place(x=width/4+5,y=75+titleBarHeight,width=width/2-5)
 
