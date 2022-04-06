@@ -25,15 +25,30 @@ def stringToNumber(string: str) -> float:
 
 root = tk.Tk()
 # Move Window
+mwcx,mwcy = 0,0
+mwcxl,mwcyl = 0,0
+def move_window_cacheclick(event):
+ global mwcx, mwcy
+ mwcx = event.x
+ mwcy = event.y
 def move_window(event):
- x,y = event.x_root-10,event.y_root-10
- root.geometry('+{0}+{1}'.format(x,y))
+ global mwcxl,mwcyl
+ restrict = 25
+ nx = event.x - mwcx + root.winfo_x()
+ ny = event.y - mwcy + root.winfo_y()
+ if nx > mwcxl+restrict: nx = mwcxl+restrict
+ if nx < mwcxl-restrict: nx = mwcxl-restrict
+ if ny > mwcyl+restrict: ny = mwcyl+restrict
+ if ny < mwcyl-restrict: ny = mwcyl-restrict
+ mwcxl,mwcyl = nx, ny
+ root.geometry('+{0}+{1}'.format(mwcxl,mwcyl))
 root.overrideredirect(True)
 # Title Bar
 titleBarHeight = 25
 titleBar = tk.Frame(root, bg=colours['BLACM'])
 titleBarLabel = tk.Label(titleBar, bg=colours['BLACM'],fg=colours['WHITE'],text='Currency Converter')
 buttonClose = tk.Button(titleBar, width=int(titleBarHeight/8), height=titleBarHeight, text='X', bg=colours['RED'], activebackground='#9A6362', fg=colours['WHITE'], activeforeground=colours['BLACK'], command=root.destroy)
+titleBar.bind('<Button-1>', move_window_cacheclick);titleBarLabel.bind('<Button-1>', move_window_cacheclick)
 titleBar.bind('<B1-Motion>', move_window);titleBarLabel.bind('<B1-Motion>', move_window);
 titleBar.place(height=titleBarHeight,width=width)
 titleBarLabel.place(height=titleBarHeight, width=105,x=titleBarHeight)
