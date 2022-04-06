@@ -2,7 +2,7 @@ import tkinter as tk
 import webbrowser as web
 import json
 
-__version__ = '1.1.0-dev'
+__version__ = '1.1.0'
 __home__    = 'https://github.com/TJ20201/CurrencyConverter'
 
 datajson = json.load(open('currency_data.json'))
