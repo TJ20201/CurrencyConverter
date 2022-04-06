@@ -87,8 +87,10 @@ verLabel = tk.Label(root, fg='#DBDBD7', bg=colours['BLACK'],text=f"Version v{__v
 verLabel.place(y=height-5,x=width-105)
 
 def convertMoney():
- try:rate = rates[f'{intype.get()}_{outype.get()}']
- except KeyError:rate = rates[f'{outype.get()}_{intype.get()}']
+ if not intype.get() == outype.get():
+  try:rate = rates[f'{intype.get()}_{outype.get()}']
+  except KeyError:rate = rates[f'{outype.get()}_{intype.get()}']
+ else: rate = 1.0000
  output.set(f"~{round(stringToNumber(curin.get()),2)} {intype.get()}\n~{round(stringToNumber(curin.get())*rate,2)} {outype.get()}")
  lineOne = output.get().split("\n")[0]
  lineTwo = output.get().split("\n")[1]
