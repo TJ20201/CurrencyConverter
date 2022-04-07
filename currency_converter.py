@@ -7,11 +7,11 @@ __home__    = 'https://github.com/TJ20201/CurrencyConverter'
 
 datajson = json.load(open('currency_data.json'))
 rates = datajson['rates']
-currencys = []
+currencies = []
 for rate in rates:
- if not rate.split("_")[0] in currencys: currencys.append(rate.split("_")[0])
- if not rate.split("_")[1] in currencys: currencys.append(rate.split("_")[1])
-currencys = sorted(currencys)
+ if not rate.split("_")[0] in currencies: currencies.append(rate.split("_")[0])
+ if not rate.split("_")[1] in currencies: currencies.append(rate.split("_")[1])
+currencies = sorted(currencies)
 
 colours = {
  'BLACK': '#28282B',
@@ -76,12 +76,12 @@ output = tk.StringVar()
 curin = tk.Entry(root,bg=colours['BLACD'],fg=colours['WHITE']) 
 curin.place(width=width-75,x=5,y=5+titleBarHeight)
 
-valin = tk.OptionMenu(root, intype, *currencys)
+valin = tk.OptionMenu(root, intype, *currencies)
 valin.config(highlightthickness=0,bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valin["menu"].config(bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valin["menu"]["borderwidth"] = valin["borderwidth"] = 0
 valin.place(x=width-65,y=5+titleBarHeight, height=20)
-valou = tk.OptionMenu(root, outype, *currencys)
+valou = tk.OptionMenu(root, outype, *currencies)
 valou.config(highlightthickness=0,bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valou["menu"].config(bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valou["menu"]["borderwidth"] = valou["borderwidth"] = 0
