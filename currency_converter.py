@@ -89,12 +89,14 @@ valou.place(x=5,y=35+titleBarHeight, height=20,width=width-10)
 final = tk.Text(root,state='disabled',fg=colours['WHITE'],relief='flat',bg=colours['BLACD'])
 final.place(x=5, y=105+titleBarHeight, width=width-10,height=height-165)
 
-def openSite():web.open(__home__, new=2)
+def openSite(prefix=''):web.open(__home__+f'/{prefix}', new=2)
 
 verLabel = tk.Label(root, fg='#DBDBD7', bg=colours['BLACK'],text=f"Version v{__version__}")
 verLabel.place(y=height-5,x=width-105)
 webLabel = tk.Button(root, fg='#9A9AD7',activeforeground='#8989C6', activebackground=colours['BLACK'],bg=colours['BLACK'],relief='flat',text="Website",command=openSite)
 webLabel.place(y=height-5,x=5)
+issLabel = tk.Button(root, fg='#9A9AD7',activeforeground='#8989C6', activebackground=colours['BLACK'],bg=colours['BLACK'],relief='flat',text="Issues",command=lambda: openSite('issues'))
+issLabel.place(y=height-5,x=65)
 
 def convertMoney():
  if not intype.get() == outype.get():
