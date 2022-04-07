@@ -1,5 +1,4 @@
 {
-	"currencys": ["CZK", "USD", "GBP", "JPY", "CAD", "AUD", "CHF", "HKD", "NZD"],
 	"rates": {
 		"USD_CZK": 0.0450,
 		"USD_GBP": 1.3100,

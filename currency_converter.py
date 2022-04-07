@@ -7,7 +7,11 @@ __home__    = 'https://github.com/TJ20201/CurrencyConverter'
 
 datajson = json.load(open('currency_data.json'))
 rates = datajson['rates']
-currencys = sorted(datajson['currencys'])
+currencys = []
+for rate in rates:
+ if not rate.split("_")[0] in currencys: currencys.append(rate.split("_")[0])
+ if not rate.split("_")[1] in currencys: currencys.append(rate.split("_")[1])
+currencys = sorted(currencys)
 
 colours = {
  'BLACK': '#28282B',
