@@ -2,7 +2,7 @@ import tkinter as tk
 import webbrowser as web
 import json
 
-__version__ = '1.1.0'
+__version__ = '1.1.1-dev'
 __home__    = 'https://github.com/TJ20201/CurrencyConverter'
 
 datajson = json.load(open('currency_data.json'))
@@ -99,9 +99,10 @@ webLabel.place(y=height-5,x=5)
 def convertMoney():
  if not intype.get() == outype.get():
   try:rate = rates[f'{intype.get()}_{outype.get()}']
-  except KeyError:rate = rates[f'{outype.get()}_{intype.get()}']
+  except KeyError:return
  else: rate = 1.0000
  output.set(f"~{round(stringToNumber(curin.get()),2)} {intype.get()}\n~{round(stringToNumber(curin.get())*rate,2)} {outype.get()}")
+ if rate == 0: output.set("Specified values have no given rate.\nSpecified values have no given rate.")
  lineOne = output.get().split("\n")[0]
  lineTwo = output.get().split("\n")[1]
  final.configure(state='normal')
