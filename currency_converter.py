@@ -2,12 +2,16 @@ import tkinter as tk
 import webbrowser as web
 import json
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 __home__    = 'https://github.com/TJ20201/CurrencyConverter'
 
 datajson = json.load(open('currency_data.json'))
 rates = datajson['rates']
-currencys = sorted(datajson['currencys'])
+currencies = []
+for rate in rates:
+ if not rate.split("_")[0] in currencies: currencies.append(rate.split("_")[0])
+ if not rate.split("_")[1] in currencies: currencies.append(rate.split("_")[1])
+currencies = sorted(currencies)
 
 colours = {
  'BLACK': '#28282B',
@@ -72,12 +76,12 @@ output = tk.StringVar()
 curin = tk.Entry(root,bg=colours['BLACD'],fg=colours['WHITE']) 
 curin.place(width=width-75,x=5,y=5+titleBarHeight)
 
-valin = tk.OptionMenu(root, intype, *currencys)
+valin = tk.OptionMenu(root, intype, *currencies)
 valin.config(highlightthickness=0,bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valin["menu"].config(bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valin["menu"]["borderwidth"] = valin["borderwidth"] = 0
 valin.place(x=width-65,y=5+titleBarHeight, height=20)
-valou = tk.OptionMenu(root, outype, *currencys)
+valou = tk.OptionMenu(root, outype, *currencies)
 valou.config(highlightthickness=0,bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valou["menu"].config(bg=colours['BLACD'],fg=colours['WHITE'],activebackground=colours['BLACM'])
 valou["menu"]["borderwidth"] = valou["borderwidth"] = 0
@@ -85,19 +89,22 @@ valou.place(x=5,y=35+titleBarHeight, height=20,width=width-10)
 final = tk.Text(root,state='disabled',fg=colours['WHITE'],relief='flat',bg=colours['BLACD'])
 final.place(x=5, y=105+titleBarHeight, width=width-10,height=height-165)
 
-def openSite():web.open(__home__, new=2)
+def openSite(prefix=''):web.open(__home__+f'/{prefix}', new=2)
 
 verLabel = tk.Label(root, fg='#DBDBD7', bg=colours['BLACK'],text=f"Version v{__version__}")
 verLabel.place(y=height-5,x=width-105)
 webLabel = tk.Button(root, fg='#9A9AD7',activeforeground='#8989C6', activebackground=colours['BLACK'],bg=colours['BLACK'],relief='flat',text="Website",command=openSite)
 webLabel.place(y=height-5,x=5)
+issLabel = tk.Button(root, fg='#9A9AD7',activeforeground='#8989C6', activebackground=colours['BLACK'],bg=colours['BLACK'],relief='flat',text="Issues",command=lambda: openSite('issues'))
+issLabel.place(y=height-5,x=65)
 
 def convertMoney():
  if not intype.get() == outype.get():
   try:rate = rates[f'{intype.get()}_{outype.get()}']
-  except KeyError:rate = rates[f'{outype.get()}_{intype.get()}']
+  except KeyError:return
  else: rate = 1.0000
  output.set(f"~{round(stringToNumber(curin.get()),2)} {intype.get()}\n~{round(stringToNumber(curin.get())*rate,2)} {outype.get()}")
+ if rate == 0: output.set("Specified values have no given rate.\nSpecified values have no given rate.")
  lineOne = output.get().split("\n")[0]
  lineTwo = output.get().split("\n")[1]
  final.configure(state='normal')
